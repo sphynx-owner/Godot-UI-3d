@@ -11,7 +11,7 @@ var viewport_texture: Texture2D
 func _ready() -> void:
 	_generated_subviewport = SubViewport.new()
 	_generated_subviewport.size = Vector2i(3, 3)
-	_generated_subviewport.debug_draw = Viewport.DEBUG_DRAW_UNSHADED
+	_generated_subviewport.debug_draw = SubViewport.DEBUG_DRAW_UNSHADED
 	_generated_subviewport.use_hdr_2d = true
 	_generated_subviewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(_generated_subviewport)
@@ -32,7 +32,11 @@ func _input(event: InputEvent) -> void:
 		if !target_ui_3d:
 			return
 		
-		if event is InputEventMouseMotion:
-			event.position = current_uv * Vector2(target_ui_3d.size)
+		var event_duplicate: InputEventMouse = event.duplicate(true)
 		
-		target_ui_3d.push_input(event)
+		event_duplicate.position = current_uv * Vector2(target_ui_3d.size)
+		target_ui_3d.push_input(event_duplicate)
+
+
+func _process(delta: float) -> void:
+	_generated_camera.global_transform = global_transform

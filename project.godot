@@ -16,7 +16,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Ui3DManager="*res://addons/3d_ui/singletons/3d_ui_manager.gd"
 UI3DManager="*res://addons/3d_ui/singletons/3d_ui_manager.gd"
 
 [editor_plugins]

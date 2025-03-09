@@ -2,11 +2,11 @@ extends Camera3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	Ui3DManager.set_fake_capture_enabled(true)
+	UI3DManager.set_fake_capture_enabled(true)
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
+	if event is InputEventMouseMotion:# && Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		global_rotation_degrees -= Vector3(event.relative.y, event.relative.x, 0) / 3
 		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -89, 89)
 	
@@ -17,3 +17,4 @@ func _process(delta: float) -> void:
 	var movement : Vector2 = Input.get_vector("A", "D", "W", "S")
 	var elevation : float = Input.get_vector("Q", "E", "Q", "E").x
 	global_position += global_basis * Vector3(movement.x, elevation, movement.y) * delta * 5;
+	$"../Cursor3D".global_transform = global_transform

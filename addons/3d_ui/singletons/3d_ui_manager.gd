@@ -34,5 +34,5 @@ func _process(delta: float) -> void:
 	get_window().get_mouse_position().x < 0 or \
 	get_window().get_mouse_position().y < 0) and \
 	get_window().has_focus() and \
-	Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
+	Input.mouse_mode == Input.MOUSE_MODE_HIDDEN and _fake_capture_enabled:
 		DisplayServer.warp_mouse(get_window().get_mouse_position().posmodv(get_window().size))

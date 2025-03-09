@@ -14,7 +14,7 @@ void vertex() {
 
 void fragment() {
 	if((CAMERA_VISIBLE_LAYERS & uint(1 << 19)) == uint(0)){
-		ALBEDO = vec3(mod(UV, id + 0.5), 0);
+		ALBEDO = vec3(mod(UV, vec2(1)), id + 0.5);
 	}
 	else{
 		ALBEDO = texture(albedo_texture, UV).xyz;
