@@ -12,7 +12,7 @@ func _ready() -> void:
 	_generated_subviewport = SubViewport.new()
 	_generated_subviewport.size = Vector2i(3, 3)
 	_generated_subviewport.debug_draw = Viewport.DEBUG_DRAW_UNSHADED
-	_generated_subviewport.use_hdr_2dq = true
+	_generated_subviewport.use_hdr_2d = true
 	_generated_subviewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	add_child(_generated_subviewport)
 	

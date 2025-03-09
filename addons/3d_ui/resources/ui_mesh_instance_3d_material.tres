@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dhbe76icns6dr" path="res://addons/3d_ui/resources/3d_ui.gdshader" id="1_nxfe0"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_nxfe0")
 shader_parameter/id = 0.0
