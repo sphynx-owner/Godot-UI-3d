@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dupn8m73drm13"]
+
+[ext_resource type="Shader" uid="uid://dhbe76icns6dr" path="res://addons/3d_ui/resources/3d_ui.gdshader" id="1_nxfe0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nxfe0")
+shader_parameter/id = 0.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

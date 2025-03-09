@@ -2,7 +2,17 @@
 class_name UI3D
 extends SubViewport
 
-var unique_id := 0
+signal unique_id_set(id: int)
 
-func _ready():
-	UI3DManager
+var unique_id := 0:
+	set(value):
+		unique_id = value
+		unique_id_set.emit(unique_id)
+
+
+func _enter_tree() -> void:
+	UI3DManager.subscribe_ui_3d(self)
+
+
+func _exit_tree() -> void:
+	UI3DManager.unsubscribe_ui_3d(self)

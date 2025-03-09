@@ -8,8 +8,6 @@ var _generated_camera: Camera3D
 
 var viewport_texture: Texture2D
 
-var past_position: Vector2
-
 func _ready() -> void:
 	_generated_subviewport = SubViewport.new()
 	_generated_subviewport.size = Vector2i(3, 3)
@@ -24,12 +22,17 @@ func _ready() -> void:
 	
 	viewport_texture = _generated_subviewport.get_texture()
 
-
-func update_mouse_position(event: InputEventMouseMotion) -> void:
-	var center_pixel: Color = viewport_texture.get_image().get_pixelv(Vector2i(1, 1))
-	var current_uv: Vector2 = Vector2(center_pixel.r, center_pixel.g)
-	
-	event.position = current_uv * Vector2($"../SubViewport2".size)
-	event.relative = event.position - past_position
-	event.screen_relative = event.position - past_position
-	past_position = event.position
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		var center_pixel: Color = viewport_texture.get_image().get_pixelv(Vector2i(1, 1))
+		var current_uv: Vector2 = Vector2(center_pixel.r, center_pixel.g)
+		var current_id: int = floor(center_pixel.b)
+		var target_ui_3d: UI3D = UI3DManager.get_ui_3d_for_id(current_id)
+		
+		if !target_ui_3d:
+			return
+		
+		if event is InputEventMouseMotion:
+			event.position = current_uv * Vector2(target_ui_3d.size)
+		
+		target_ui_3d.push_input(event)

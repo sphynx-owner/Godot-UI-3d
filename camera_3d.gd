@@ -5,14 +5,6 @@ func _ready():
 
 
 func _input(event: InputEvent) -> void:
-	var event_duplicate: InputEvent
-	
-	if event is InputEventMouse:
-		event_duplicate = event.duplicate()
-		if event_duplicate is InputEventMouseMotion:
-			$"../SubViewport".update_mouse_position(event_duplicate)
-		$"../SubViewport2".push_input(event_duplicate)
-	
 	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_HIDDEN:
 		global_rotation_degrees -= Vector3(event.relative.y, event.relative.x, 0) / 3
 		global_rotation_degrees.x = clamp(global_rotation_degrees.x, -89, 89)
