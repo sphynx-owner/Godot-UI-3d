@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://dswqcf6k4t7rh"]
+
+[ext_resource type="Script" uid="uid://cipcgxhb2qy5o" path="res://camera_3d.gd" id="1_a0tk4"]
+[ext_resource type="Shader" uid="uid://dhbe76icns6dr" path="res://addons/3d_ui/resources/3d_ui.gdshader" id="1_a202f"]
+[ext_resource type="Script" uid="uid://bi6gixa7to63q" path="res://addons/3d_ui/scripts/cursor_3d.gd" id="2_jka67"]
+[ext_resource type="Script" uid="uid://uqdgwodkxncx" path="res://ui_camera_3d.gd" id="2_r3fl7"]
+[ext_resource type="Texture2D" uid="uid://cmvqoaxemj0iw" path="res://icon.svg" id="5_jka67"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jka67"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a202f"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a0tk4"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_a202f")
+shader_parameter/albedo_texture = SubResource("ViewportTexture_a202f")
+shader_parameter/uv_scale = Vector2(0.715, 1)
+shader_parameter/uv_offset = Vector2(0.03, 0.15)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a0tk4"]
+
+[sub_resource type="Sky" id="Sky_r3fl7"]
+sky_material = SubResource("ProceduralSkyMaterial_a0tk4")
+
+[sub_resource type="Environment" id="Environment_jka67"]
+background_mode = 2
+sky = SubResource("Sky_r3fl7")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.713348, 0.70081, 0, -0.70081, 0.713348, 0, 1.33098, 1.02194)
+script = ExtResource("1_a0tk4")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+debug_draw = 1
+use_hdr_2d = true
+size = Vector2i(3, 3)
+render_target_update_mode = 4
+script = ExtResource("2_jka67")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" node_paths=PackedStringArray("camera_to_follow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167403, 0.113466, 1.744)
+cull_mask = 524287
+script = ExtResource("2_r3fl7")
+camera_to_follow = NodePath("../../Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jka67")
+surface_material_override/0 = SubResource("ShaderMaterial_a0tk4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58364, 0, 0)
+mesh = SubResource("SphereMesh_jka67")
+surface_material_override/0 = SubResource("ShaderMaterial_a0tk4")
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport2"]
+
+[node name="Button" type="Button" parent="SubViewport2/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -15.5
+offset_right = 54.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Some button
+"
+
+[node name="Button2" type="Button" parent="SubViewport2/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 52.425
+offset_top = -15.5
+offset_right = 160.425
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Some button
+"
+
+[node name="Button3" type="Button" parent="SubViewport2/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -15.5
+offset_right = 54.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Some button
+"
+
+[node name="Button4" type="Button" parent="SubViewport2/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -15.5
+offset_right = 54.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Some button
+"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jka67")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.125195, 0.992132, 0, -0.992132, 0.125195, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_jka67")
+expand_mode = 1
