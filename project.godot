@@ -14,6 +14,11 @@ config/name="3D UI"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Ui3DManager="*res://addons/3d_ui/singletons/3d_ui_manager.gd"
+UI3DManager="*res://addons/3d_ui/singletons/3d_ui_manager.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/3d_ui/plugin.cfg")
