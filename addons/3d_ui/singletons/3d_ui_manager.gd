@@ -22,7 +22,7 @@ func unsubscribe_ui_3d(ui_3d: UI3D) -> void:
 
 
 func get_ui_3d_for_id(id: int) -> UI3D:
-	return _ui_3d_by_id[id]
+	return _ui_3d_by_id.get(id)
 
 
 func set_fake_capture_enabled(enabled: bool) -> void:

@@ -1,5 +1,7 @@
 shader_type spatial;
 
+render_mode depth_draw_always;
+
 uniform sampler2D albedo_texture;
 
 uniform float id = 0;
