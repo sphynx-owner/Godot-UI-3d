@@ -23,7 +23,7 @@ void vertex() {
 void fragment() {
 	bool out_of_bounds = (UV.x < 0.) || (UV.y < 0.) || (UV.x > 1.) || (UV.y > 1.);
 	
-	if((CAMERA_VISIBLE_LAYERS & uint(1 << 19)) == uint(0)){
+	if((CAMERA_VISIBLE_LAYERS & uint(1 << (20 - 1))) == uint(0)){
 		ALBEDO = vec3(mod(UV, vec2(1)), out_of_bounds ? 0.0 : id + 0.5);
 	}
 	else{

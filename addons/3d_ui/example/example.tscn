@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dswqcf6k4t7rh"]
+[gd_scene load_steps=14 format=3 uid="uid://dswqcf6k4t7rh"]
 
 [ext_resource type="Script" uid="uid://cipcgxhb2qy5o" path="res://addons/3d_ui/example/camera_3d.gd" id="1_k8uwf"]
 [ext_resource type="Script" uid="uid://bi6gixa7to63q" path="res://addons/3d_ui/scripts/cursor_3d.gd" id="3_knfqo"]
@@ -21,46 +21,19 @@ sky = SubResource("Sky_r3fl7")
 [sub_resource type="ViewportTexture" id="ViewportTexture_glfjm"]
 viewport_path = NodePath("UI3D")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_knfqo"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("4_ht1oo")
-shader_parameter/albedo_texture = SubResource("ViewportTexture_glfjm")
-shader_parameter/id = 0.0
-shader_parameter/uv_offset = Vector2(0, 0.22)
-shader_parameter/uv_scale = Vector2(0.35, 0.9)
-shader_parameter/uv_rotation = 0.0
-shader_parameter/out_of_bounds_color = Color(0, 0, 0, 1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_k8uwf"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_glfjm"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_ht1oo")
 shader_parameter/albedo_texture = SubResource("ViewportTexture_glfjm")
 shader_parameter/id = 0.0
-shader_parameter/uv_offset = Vector2(0, 0.22)
-shader_parameter/uv_scale = Vector2(0.675, 0.425)
+shader_parameter/uv_offset = Vector2(0, 0.225)
+shader_parameter/uv_scale = Vector2(0.27, 0.4)
 shader_parameter/uv_rotation = 0.0
 shader_parameter/out_of_bounds_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_knfqo"]
-top_radius = 0.0
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_k8uwf"]
-viewport_path = NodePath("UI3D2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3l4y"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("4_ht1oo")
-shader_parameter/albedo_texture = SubResource("ViewportTexture_k8uwf")
-shader_parameter/id = 0.0
-shader_parameter/uv_offset = Vector2(-0.205, -0.235)
-shader_parameter/uv_scale = Vector2(0.675, 0.23)
-shader_parameter/uv_rotation = 0.0
-shader_parameter/out_of_bounds_color = Color(0, 0, 0, 0)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_knfqo"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
 
@@ -92,40 +65,6 @@ environment = SubResource("Environment_jka67")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.125195, 0.992132, 0, -0.992132, 0.125195, 0, 0, 0)
-
-[node name="Cursor3D" type="Node3D" parent="."]
-script = ExtResource("3_knfqo")
-metadata/_custom_type_script = "uid://bi6gixa7to63q"
-
-[node name="UIMeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("ui_3d")]
-mesh = SubResource("BoxMesh_k8uwf")
-surface_material_override/0 = SubResource("ShaderMaterial_knfqo")
-script = ExtResource("5_lbrr0")
-ui_3d = NodePath("../UI3D")
-ui_offset = Vector2(0, 0.22)
-ui_scale = Vector2(0.35, 0.9)
-metadata/_custom_type_script = "uid://diu3mxrvfxkc2"
-
-[node name="UIMeshInstance3D2" type="MeshInstance3D" parent="." node_paths=PackedStringArray("ui_3d")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 1.60309, 0, 0)
-mesh = SubResource("TorusMesh_k8uwf")
-surface_material_override/0 = SubResource("ShaderMaterial_glfjm")
-script = ExtResource("5_lbrr0")
-ui_3d = NodePath("../UI3D")
-ui_offset = Vector2(0, 0.22)
-ui_scale = Vector2(0.675, 0.425)
-metadata/_custom_type_script = "uid://diu3mxrvfxkc2"
-
-[node name="UIMeshInstance3D3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("ui_3d")]
-transform = Transform3D(0.159761, 0, -0.987156, 0, 1, 0, 0.987156, 0, 0.159761, -1.52176, 0.535141, 0.189646)
-mesh = SubResource("CylinderMesh_knfqo")
-surface_material_override/0 = SubResource("ShaderMaterial_u3l4y")
-script = ExtResource("5_lbrr0")
-ui_3d = NodePath("../UI3D2")
-ui_offset = Vector2(-0.205, -0.235)
-ui_scale = Vector2(0.675, 0.23)
-out_of_bounds_color = Color(0, 0, 0, 0)
-metadata/_custom_type_script = "uid://diu3mxrvfxkc2"
 
 [node name="UI3D" type="SubViewport" parent="."]
 script = ExtResource("6_ich88")
@@ -192,3 +131,23 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Differet button"
+
+[node name="UIMeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("ui_3d")]
+mesh = SubResource("BoxMesh_k8uwf")
+surface_material_override/0 = SubResource("ShaderMaterial_glfjm")
+script = ExtResource("5_lbrr0")
+ui_3d = NodePath("../UI3D")
+ui_offset = Vector2(0, 0.225)
+ui_scale = Vector2(0.27, 0.4)
+metadata/_custom_type_script = "uid://diu3mxrvfxkc2"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="UIMeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UIMeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_knfqo")
+
+[node name="Cursor3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23714, 0)
+target_position = Vector3(0, 0, -1)
+script = ExtResource("3_knfqo")
+metadata/_custom_type_script = "uid://bi6gixa7to63q"

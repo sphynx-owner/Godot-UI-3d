@@ -71,13 +71,24 @@ func _get_configuration_warnings() -> PackedStringArray:
 		ret.append("target surface override material id does not exist")
 	if not ui_3d:
 		ret.append("no UI3D configured")
+	
+	var has_collider_child := false
+	
+	for child in get_children():
+		if child is CollisionObject3D:
+			has_collider_child = true
+			break
+	
+	if !has_collider_child:
+		ret.append("missing child collider for the cursor to detect")
+	
 	return ret
 
 
 func _set(property: StringName, value: Variant) -> bool:
 	if property == "mesh":
 		update_configuration_warnings()
-		_update_ui_3d_setup()
+		_update_ui_3d_setup.call_deferred()
 	if property == _get_target_material_property():
 		if _material_setter_gate:
 			_material_setter_gate = false
