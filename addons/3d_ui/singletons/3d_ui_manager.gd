@@ -1,7 +1,8 @@
 @tool
 extends Node
 
-var _unique_id_counter := 0
+# I start at 1 so that I can signify the lack of ui when the blue channel is 0
+var _unique_id_counter := 1
 
 ## shape: {[id: int]: [ui_3d: UI3D]}
 var _ui_3d_by_id: Dictionary

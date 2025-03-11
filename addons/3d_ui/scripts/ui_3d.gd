@@ -2,12 +2,12 @@
 class_name UI3D
 extends SubViewport
 
-signal unique_id_set(id: int)
+signal unique_id_changed()
 
 var unique_id := 0:
 	set(value):
 		unique_id = value
-		unique_id_set.emit(unique_id)
+		unique_id_changed.emit()
 
 
 func _enter_tree() -> void:
